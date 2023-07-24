@@ -1,6 +1,5 @@
 package tests;
-
-import authorization.ApiAuthorization;
+import authorization.AuthApi;
 import com.codeborne.selenide.Configuration;
 
 import config.AppConfig;
@@ -12,7 +11,7 @@ public class TestBase {
     static AppConfig config = ConfigFactory.create(AppConfig.class, System.getProperties());
     String login = config.getLogin();
     String password = config.getPassword();
-    ApiAuthorization ApiAuth = new ApiAuthorization();
+    AuthApi authApi = new AuthApi();
 
     @BeforeAll
     static void setup() {

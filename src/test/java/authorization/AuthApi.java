@@ -1,9 +1,9 @@
 package authorization;
 
-import static helpers.AllureListener.withCustomTemplates;
+import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.given;
 
-public class ApiAuthorization {
+public class AuthApi {
     public static String authCookieKey = "NOPCOMMERCE.AUTH";
 
     public String getAuthCookie(String login, String password) {

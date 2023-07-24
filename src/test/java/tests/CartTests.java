@@ -1,12 +1,13 @@
 package tests;
 
 
+import authorization.AuthApi;
 import models.AddToCartResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Test;
 
-import static authorization.ApiAuthorization.authCookieKey;
+import static authorization.AuthApi.authCookieKey;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -25,7 +26,7 @@ public class CartTests extends TestBase {
     @Test
     void addToCartAsAuthorizedTest() {
         step("Get authorization cookie by api and set it to browser", () ->
-                authCookieValue = ApiAuth.getAuthCookie(login, password));
+                authCookieValue = authApi.getAuthCookie(login, password));
 
         step("Get the number of items in the cart", () -> {
             String page = given()

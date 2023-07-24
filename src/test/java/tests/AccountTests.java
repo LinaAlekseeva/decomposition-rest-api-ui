@@ -1,14 +1,14 @@
 package tests;
-
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static authorization.ApiAuthorization.authCookieKey;
+import static authorization.AuthApi.authCookieKey;
+
 import static io.restassured.RestAssured.given;
 
-public class Account extends TestBase {
+public class AccountTests extends TestBase {
 
     @Test
     void editAddressTest() {
@@ -27,14 +27,14 @@ public class Account extends TestBase {
         data.put("Address.PhoneNumber", "098987876");
         data.put("Address.FaxNumber", "112233");
 
-        String authCookieValue = ApiAuth.getAuthCookie(login, password);
+        String authCookieValue = authApi.getAuthCookie(login, password);
 
         given()
                 .contentType("application/x-www-form-urlencoded")
                 .cookie(authCookieKey, authCookieValue)
                 .formParams(data)
                 .when()
-                .post("/customer/addessedit/3108172")
+                .post("/customer/addressedit/3108172")
                 .then()
                 .log().all()
                 .statusCode(302);
@@ -57,14 +57,14 @@ public class Account extends TestBase {
         data.put("Address.PhoneNumber", "098987876");
         data.put("Address.FaxNumber", "112233");
 
-        String authCookieValue = ApiAuth.getAuthCookie(login, password);
+        String authCookieValue = authApi.getAuthCookie(login, password);
 
         given()
                 .contentType("application/x-www-form-urlencoded")
                 .cookie(authCookieKey, authCookieValue)
                 .formParams(data)
                 .when()
-                .post("/customer/addessadd")
+                .post("/customer/addressadd")
                 .then()
                 .log().all()
                 .statusCode(302);

@@ -1,12 +1,14 @@
 package tests;
+
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
-import static authorization.ApiAuthorization.authCookieKey;
+import static authorization.AuthApi.authCookieKey;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
 import static io.qameta.allure.Allure.step;
 
 public class LoginTests extends TestBase {
@@ -28,7 +30,7 @@ public class LoginTests extends TestBase {
     @Test
     void loginWithApiTest() {
         step("Get authorization cookie by api and set it to browser", () -> {
-            String authCookieValue = ApiAuth.getAuthCookie(login, password);
+            String authCookieValue = authApi.getAuthCookie(login, password);
 
             open("/Themes/DefaultClean/Content/images/bullet-right.gif");
             getWebDriver().manage().addCookie(new Cookie(authCookieKey, authCookieValue));
