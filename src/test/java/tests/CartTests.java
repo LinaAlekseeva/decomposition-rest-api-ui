@@ -1,7 +1,6 @@
 package tests;
 
 
-import authorization.AuthApi;
 import models.AddToCartResponse;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -57,7 +56,7 @@ public class CartTests extends TestBase {
         step("Check adding items to cart", () -> {
             assertThat(response.getSuccess()).isEqualTo("true");
             assertThat(response.getMessage()).isEqualTo("The product has been added to your <a href=\"/cart\">shopping cart</a>");
-            assertThat(response.getUpDateTopCartSectionHtml()).isEqualTo("(" + (numberOfItems + quantity) + ")");
+            assertThat(response.getUpdatetopcartsectionhtml()).isEqualTo("(" + (numberOfItems + quantity) + ")");
         });
     }
 
@@ -74,6 +73,6 @@ public class CartTests extends TestBase {
                 .statusCode(200)
                 .body("success", is(true))
                 .body("message", is("The product has been added to your <a href=\"/cart\">shopping cart</a>"))
-                .body("updateTopCartSectionHtml", is("(3)"));
+                .body("updatetopcartsectionhtml", is("(3)"));
     }
 }

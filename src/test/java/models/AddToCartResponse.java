@@ -8,7 +8,7 @@ public class AddToCartResponse {
 
     private String success;
     private String message;
-    private String upDateTopCartSectionHtml;
-    private String upDateFlyOutCartSectionHtml;
+    private String updatetopcartsectionhtml;
+    private String updateflyoutcartsectionhtml;
 
 }
